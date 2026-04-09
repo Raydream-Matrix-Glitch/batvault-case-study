@@ -1,0 +1,76 @@
+{
+  "title": "BatVault Observability",
+  "schemaVersion": 39,
+  "version": 1,
+  "editable": true,
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "P95 TTFB (s)",
+      "targets": [
+        {
+<<<<<<< HEAD
+          "expr": "histogram_quantile(0.95, sum(rate(api_edge_ttfb_seconds_bucket[5m])) by (le))",
+          "legendFormat": "P95 TTFB"
+        }
+      ],
+      "options": {
+        "legend": { "displayMode": "list" },
+        "exemplars": true
+      },
+=======
+          "expr": "histogram_quantile(0.95, sum(rate(ttfb_seconds_bucket[5m])) by (le))",
+          "legendFormat": "P95 TTFB"
+        }
+      ],
+      "options": { "legend": { "displayMode": "list" } },
+>>>>>>> origin/main
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 0 }
+    },
+    {
+      "type": "timeseries",
+      "title": "Cache Hit Rate (resolver)",
+      "targets": [
+        {
+<<<<<<< HEAD
+          "expr": "sum(rate(cache_hit_total{service=\\\"memory_api\\\"}[5m])) / (sum(rate(cache_hit_total{service=\\\"memory_api\\\"}[5m])) + sum(rate(cache_miss_total{service=\\\"memory_api\\\"}[5m])))",
+=======
+          "expr": "sum(rate(cache_hit_total{service=\"resolver\"}[5m])) / (sum(rate(cache_hit_total{service=\"resolver\"}[5m])) + sum(rate(cache_miss_total{service=\"resolver\"}[5m])))",
+>>>>>>> origin/main
+          "legendFormat": "hit-rate"
+        }
+      ],
+      "fieldConfig": { "defaults": { "unit": "percentunit" } },
+<<<<<<< HEAD
+      "options": {
+        "legend": { "displayMode": "list" },
+        "exemplars": true
+      },
+=======
+      "options": { "legend": { "displayMode": "list" } },
+>>>>>>> origin/main
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 8 }
+    },
+    {
+      "type": "timeseries",
+      "title": "Selector Truncations / s (gateway)",
+      "targets": [
+        {
+          "expr": "sum(rate(selector_truncation[5m]))",
+          "legendFormat": "truncations"
+        }
+      ],
+<<<<<<< HEAD
+      "options": {
+        "legend": { "displayMode": "list" },
+        "exemplars": true
+      },
+=======
+      "options": { "legend": { "displayMode": "list" } },
+>>>>>>> origin/main
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 8 }
+    }
+  ],
+  "time": { "from": "now-6h", "to": "now" },
+  "timepicker": { "refresh_intervals": ["5s","10s","30s","1m"] }
+}

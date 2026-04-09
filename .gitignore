@@ -1,0 +1,63 @@
+.env.local
+services/gateway/.env.local
+services/memory_api/src/memory/.env.local
+
+.env.local.*
+*.env.local
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.venv*/
+.env
+*.log
+.pytest_cache/
+build/
+
+# Node
+node_modules/
+.next/
+dist/
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Docker
+*.local.yml
+docker-data/
+.docker-cache/
+**/.docker-cache/
+
+# Windows ADS noise
+*:Zone.Identifier
+*Zone.Identifier
+
+# Build artefacts (do not commit)
+**/build/
+**/build/lib/
+**/dist/
+**/*.egg-info/
+
+#generated
+# frontend generated
+batvault_frontend/src/types/generated/
+batvault_frontend/openapi/
+batvault_frontend/sdk/
+batvault_frontend/packages/
+
+# python generated
+packages/core_models_gen/
+
+# tools
+.tools/
+
+# local scripts you don't want
+scripts/__pycache__/
+scripts/*.log
+scripts/*.tmp

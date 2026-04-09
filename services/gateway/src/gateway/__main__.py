@@ -1,0 +1,33 @@
+import os
+<<<<<<< HEAD
+import sys
+import logging
+from pathlib import Path
+
+# Ensure the monorepo import shim is active even if PYTHONPATH is minimal.
+# This guarantees 'packages/*/src' and 'services/*/src' are importable.
+ROOT = Path(__file__).resolve().parents[4]  # -> /app
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+try:
+    # Adds /app, /app/packages/*/src, /app/services/*/src at interpreter startup.
+    import sitecustomize  # noqa: F401
+except Exception:
+    # Non-fatal: if this fails, subsequent imports will raise clearly.
+    pass
+
+from core_utils.uvicorn_entry import run
+from core_config.constants import HEALTH_PORT as PORT
+
+=======
+import logging
+from core_utils.uvicorn_entry import run
+from core_config.constants import HEALTH_PORT as PORT
+
+logging.basicConfig(level="INFO")
+logging.getLogger("gateway").info("gateway_startup")
+
+
+>>>>>>> origin/main
+if __name__ == "__main__":
+    run("gateway.app:app", port=PORT, log_level="info", access_log=False)
